@@ -4,6 +4,7 @@ import sk.itsovy.kutka.school.Student;
 import sk.itsovy.kutka.school.Teacher;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class MyArray {
 
@@ -223,18 +224,18 @@ public class MyArray {
         }
         Teacher[] arr2 = new Teacher[8];
         for (int i = 0; i < 8; i++) {
-            arr2[i] = new Teacher("Teacher" + i, rnd.nextInt(36) + 30, rnd.nextInt(501)+500);
+            arr2[i] = new Teacher("Teacher" + i, rnd.nextInt(36) + 30, rnd.nextInt(501) + 500);
         }
         System.out.println("**********************************************");
         for (Teacher temp : arr2)
-            if ((temp.getSalary()>765) && (temp.getSalary()<935))
-            System.out.println(temp.getName() + " " + temp.getAge() + " " + temp.getSalary());
+            if ((temp.getSalary() > 765) && (temp.getSalary() < 935))
+                System.out.println(temp.getName() + " " + temp.getAge() + " " + temp.getSalary());
     }
 
 
     public static void test10() {
         String[] names = {"Ivan", "Peter", "Erik", "Zuzana", "Leo", "Viliam"};
-        for (int i = 0; i < names.length ; i++) {
+        for (int i = 0; i < names.length; i++) {
             System.out.println(names[i] + " ");
         }
         System.out.println("********************************");
@@ -246,15 +247,15 @@ public class MyArray {
         System.out.println("**************************************");
         int max = 0;
         int min = 0;
-        for (int i = 0; i < names.length-1; i++) {
-            if (names[i].length() <= names[i+1].length()) {
-                max = names[i+1].length();
+        for (int i = 0; i < names.length - 1; i++) {
+            if (names[i].length() <= names[i + 1].length()) {
+                max = names[i + 1].length();
             }
         }
 
-        for (int i = 0; i < names.length-1; i++) {
-            if (names[i].length() >= names[i+1].length()) {
-                min = names[i+1].length();
+        for (int i = 0; i < names.length - 1; i++) {
+            if (names[i].length() >= names[i + 1].length()) {
+                min = names[i + 1].length();
             }
         }
         System.out.println();
@@ -281,5 +282,129 @@ public class MyArray {
         }
     }
 
+    public static void test11() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter any word: ");
+        String word = sc.nextLine();
+
+        int length = word.length();
+        for (int i = length - 1; i >= 0; i--) {
+            System.out.print(word.charAt(i));
+
+        }
+    }
+
+    public static void test12() {
+        int[] num = {17, 0, -2, 13, 68, 103, 21, 55, 1};
+        int n = num.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (num[i] > num[j]) {
+                    int temp = num[i];
+                    num[i] = num[j];
+                    num[j] = temp;
+                }
+            }
+            System.out.println(num[i]);
+
+        }
+    }
+
+    /**
+     * Generovanie čísel od 1 po 80 v poli o rozmere 20 a ich zoradenie. od najm. po najv.
+     */
+    public static void test13() {
+        Random rn = new Random();
+        int[] a = new int[20];
+
+        for (int i = 0; i < a.length; i++) {
+            int count = 0, temp;
+            temp = rn.nextInt(80) + 1;
+            for (int j = 0; j < i; j++) {
+                if (temp == a[j]) {
+                    count = 1;
+                    break;
+                }
+            }
+            if (count == 0) a[i] = temp;
+            else i--;
+        }
+        //for (int i = 0; i < a.length; i++) {
+        //System.out.print(a[i] + " ");
+        //}
+
+        int n = a.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (a[i] > a[j]) {
+                    int temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+            }
+
+        }
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+
+        }
+
+
+    }
+
+    public static void test14() {
+        String[] arr = {"Monika", "Yeli", "Patrik", "Miro", "Maťo", "Vlado", "Damian", "Kubo", "Tomaš", "Tibor"};
+
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i].compareToIgnoreCase(arr[j]) > 0) {
+                    String temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+
+        }
+        System.out.println();
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i].compareToIgnoreCase(arr[j]) < 0) {
+                    String temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+    public static void test15() {
+        int[] bubble = {9, 13, 2, 4, 5, 8, 20};
+        int n = bubble.length;
+
+        for (int i = 0; i < n-1 ; i++) {
+            for (int j = 0; j < n-1-i; j++) {
+                if(bubble[j] > bubble[j+1]) {
+                    int temp = bubble[j];
+                    bubble[j] = bubble[j+1];
+                    bubble[j+1] = temp;
+                }
+
+            }
+        }
+        for (int i = 0; i < bubble.length; i++) {
+            System.out.println(bubble[i]);
+        }
+
+        }
 }
 
