@@ -130,15 +130,35 @@ public class MyArray implements ArrayMethods {
 
     @Override
     public void addItem(int newValue) {
-        int[] newArr = new int[arr.length + newValue];
+        int[] newArr = new int[arr.length + 1];
         System.arraycopy(arr, 0, newArr, 0, arr.length);
         arr = newArr;
+        newArr[size] = newValue;
         System.out.println(newArr.length);
+        for (int i = 0; i < newArr.length; i++) {
+            System.out.print(newArr[i] + " "); //Kontrola pridania.
+        }
     }
 
     @Override
     public void addItem(int newValue, int position) {
+        int[] newArr = new int[size + 1];
+        //arr = newArr;
+        //newArr[size] = newValue;
+        System.out.println(newArr.length);
+        for (int i = 0; i < size + 1; i++) {
+            if(i < position) {
+                newArr[i] = arr[i];
+            } else if (i == position) {
+                newArr[i] = newValue;
+            } else {
+                newArr[i] = arr[i-1];
+            }
+        }
+        for (int i = 0; i < size + 1; i++) {
+            System.out.print(newArr[i] + " ");
 
+        }
     }
 
     @Override
