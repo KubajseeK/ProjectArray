@@ -120,11 +120,36 @@ public class MyArray implements ArrayMethods {
 
     @Override
     public void incrementValues() {
+        for (int i = 0; i < size; i++) {
+            arr[i] += 1;
+        }
 
     }
 
     @Override
     public void sort(boolean ascending) {
+        if (ascending) {
+            for (int i = 0; i < size - 1; i++) {
+                for (int j = i + 1; j < size; j++) {
+                    if (arr[i] > arr[j]) {
+                        int temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+        } else {
+            for (int i = 0; i < size - 1; i++) {
+                for (int j = i + 1; j < size; j++) {
+                    if (arr[i] < arr[j]) {
+                        int temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+
+        }
 
     }
 
@@ -163,20 +188,22 @@ public class MyArray implements ArrayMethods {
 
     @Override
     public int[] copy() {
-        return new int[0];
+        int[] arrCopy = arr.clone();
+        return arrCopy;
     }
 
     @Override
     public int getItem(int position) {
-        return 0;
+        return arr[position];
     }
 
     @Override
     public String toString() {
-        return "MyArray{" +
-                "arr=" + Arrays.toString(arr) +
-                ", size=" + size +
-                '}';
+        String text = "";
+        for (int i = 0; i < size; i++) {
+            text += arr[i] + " ";
+        }
+        return text;
     }
 
     public void error(String message) {
