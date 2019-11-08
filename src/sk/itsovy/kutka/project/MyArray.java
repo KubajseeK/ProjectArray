@@ -111,7 +111,7 @@ public class MyArray implements ArrayMethods {
     public int countOfEvenValues() {
         int count = 0;
         for (int i = 0; i < size; i++) {
-            if(arr[i] % 2 == 0) {
+            if (arr[i] % 2 == 0) {
                 count++;
             }
         }
@@ -167,22 +167,26 @@ public class MyArray implements ArrayMethods {
 
     @Override
     public void addItem(int newValue, int position) {
-        int[] newArr = new int[size + 1];
-        //arr = newArr;
-        //newArr[size] = newValue;
-        System.out.println(newArr.length);
-        for (int i = 0; i < size + 1; i++) {
-            if(i < position) {
-                newArr[i] = arr[i];
-            } else if (i == position) {
-                newArr[i] = newValue;
-            } else {
-                newArr[i] = arr[i-1];
+        if (position < 0)
+            return;
+        if (position >= size)
+            addItem(newValue);
+        else {
+            int[] newArr = new int[size + 1];
+            System.out.println(newArr.length);
+            for (int i = 0; i < size + 1; i++) {
+                if (i < position) {
+                    newArr[i] = arr[i];
+                } else if (i == position) {
+                    newArr[i] = newValue;
+                } else {
+                    newArr[i] = arr[i - 1];
+                }
             }
-        }
-        for (int i = 0; i < size + 1; i++) {
-            System.out.print(newArr[i] + " ");
+            for (int i = 0; i < size + 1; i++) {
+                System.out.print(newArr[i] + " ");
 
+            }
         }
     }
 
@@ -212,4 +216,27 @@ public class MyArray implements ArrayMethods {
 
     }
 
+    public void reverse() {
+        for (int i = 0; i < size / 2; i++) {
+            int temp = arr[i];
+            arr[i] = arr[size-1-i];
+            arr[size-1-i] = temp;
+
+        }
+
+    }
+
+    public void randomize() {
+        Random rn = new Random();
+        for (int i = 0; i < 2* size; i++) {
+            int index1 = rn.nextInt(size);
+            int index2 = rn.nextInt(size);
+            int temp = arr[index1];
+            arr[index1] = arr[index2];
+            arr[index2] = temp;
+
+        }
+    }
 }
+
+
