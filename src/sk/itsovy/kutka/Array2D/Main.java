@@ -5,11 +5,12 @@ import java.util.Random;
 public class Main {
     private final static int numRows = 4;
     private final static int numCols = 4;
+
     public static void main(String[] args) {
 
         Random rnd = new Random();
         int[][] array;
-        int r,c;
+        int r, c;
         array = new int[numRows][numCols];
 
         for (r = 0; r < array.length; r++) {
@@ -20,14 +21,14 @@ public class Main {
             System.out.println();
         }
         int max = array[0][0];
-        for (r = 0;  r < array.length; r++) {
+        for (r = 0; r < array.length; r++) {
             for (c = 0; c < array[r].length; c++) {
                 if (max < array[r][c]) {
                     max = array[r][c];
                 }
             }
         }
-        System.out.println("Max Value : " +max);
+        System.out.println("Max Value : " + max);
 
         int maxColSum = 0;
         int column = 0;
@@ -40,7 +41,7 @@ public class Main {
                 for (r = 0; r < numRows; r++) {
                     sum += array[r][c];
                 }
-                if (sum>maxColSum) {
+                if (sum > maxColSum) {
                     maxColSum = sum;
                     column = c;
                 }
@@ -53,9 +54,99 @@ public class Main {
                 System.out.print(array[r][c] + " ");
             }
             System.out.println();
-        }
 
-        int[][] tictactoe = {{1,0,2}, {0,1,2}, {0,2,0}};
+        }
+        System.out.println("*********************************");
+        System.out.println("*********************************");
+
+        int[][] tictactoe = {{1, 0, 2}, {0, 1, 2}, {0, 2, 0}};
+        {
+
+
+        }
+        int even = 0;
+        int uneven = 0;
+        for (r = 0; r < numRows; r++) {
+            for (c = 0; c < numCols; c++) {
+                System.out.print(array[r][c] + " ");
+                if (array[r][c] % 2 == 0) {
+                    even++;
+                } else {
+                    uneven++;
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Even: " + even + " Uneven: " + uneven);
+
+        int count = 0;
+        for (r = 0; r <= numRows - 1; r++) {
+            for (c = 0; c <= numCols - 1; c++) {
+                if (r == 0 || r == array.length - 1 || c == 0 || c == array[r].length - 1) {
+                    count += array[r][c];
+                }
+            }
+        }
+        System.out.println(count);
+        System.out.println("*********************************");
+        System.out.println("*********************************");
+
+        int[][] arrA = new int[4][4];
+        int[][] arrB = new int[4][4];
+
+        for (r = 0; r < arrA.length; r++) {
+            for (c = 0; c < arrA[r].length; c++) {
+                arrA[r][c] = rnd.nextInt(5) + 1;
+                System.out.print(arrA[r][c] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+        for (r = 0; r < arrB.length; r++) {
+            for (c = 0; c < arrB[r].length; c++) {
+                arrB[r][c] = rnd.nextInt(5) + 1;
+                System.out.print(arrB[r][c] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+        System.out.println("****");
+        System.out.println();
+        System.out.println("Sum of Arrays");
+
+        //Sum of Arrays
+        int[][] sumResult = new int[4][4];
+        for (r = 0; r < sumResult.length; r++) {
+            for (c = 0; c < sumResult[r].length; c++) {
+                sumResult[r][c] = arrA[r][c] + arrB[r][c];
+                System.out.print(sumResult[r][c] + " ");
+
+            }
+            System.out.println();
+
+        }
+        System.out.println("*****************************************");
+        System.out.println("Multiplication");
+
+        //Multiplication of Arrays
+        int[][] result = new int[arrA.length][arrB[0].length];
+
+        for (int rowA = 0; rowA < arrA.length; rowA++) {
+            for (int columnB = 0; columnB < arrB[0].length; columnB++) {
+                for (int ColumnA = 0; ColumnA < arrA[0].length; ColumnA++) {
+                    result[rowA][columnB] += arrA[rowA][ColumnA] * arrB[ColumnA][columnB];
+
+                }
+                System.out.print(result[rowA][columnB] + " ");
+
+            }
+            System.out.println();
+
+        }
 
     }
 }
+
