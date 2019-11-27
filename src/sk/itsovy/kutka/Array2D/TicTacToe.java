@@ -3,6 +3,13 @@ package sk.itsovy.kutka.Array2D;
 public class TicTacToe {
     private char[][] space = new char[3][3];
     private int numMoves = 0;
+    public static int countOfPlayers;
+
+    public TicTacToe(int numMoves) {
+        this.space = space;
+        this.numMoves = numMoves;
+        countOfPlayers++;
+    }
 
     public void moving(int row, int col, char player) {
         if(space[row][col] == 'X' || space[row][col] == '0') {
